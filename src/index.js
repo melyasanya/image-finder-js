@@ -47,8 +47,7 @@ const picturesMarkUp = data => {
     );
   }
   if (
-    Math.ceil(data.data.totalHits / 40 < pageNumber) &&
-    data.data.totalHits < 40 &&
+    Math.ceil(data.data.totalHits / 40) <= pageNumber &&
     data.data.totalHits !== 0
   ) {
     loadBtn.hidden = true;
