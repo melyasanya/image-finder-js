@@ -51,7 +51,6 @@ const picturesMarkUp = data => {
       "We're sorry, but you've reached the end of search results."
     );
   }
-
   const markUp = picturesArray
     .map(
       e =>
