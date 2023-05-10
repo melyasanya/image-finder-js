@@ -1,7 +1,12 @@
 import './css/styles.css';
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// import SimpleLightbox from 'simplelightbox';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
+const lightbox = new SimpleLightbox('.gallery a', {
+  /* options */
+});
 
 const form = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
@@ -76,6 +81,7 @@ const picturesMarkUp = data => {
     )
     .join('');
   gallery.insertAdjacentHTML('beforeend', markUp);
+  lightbox.refresh();
 };
 
 const submitForm = async e => {
@@ -98,7 +104,3 @@ const loadMore = async () => {
 form.addEventListener('submit', submitForm);
 
 loadBtn.addEventListener('click', loadMore);
-
-// var lightbox = new SimpleLightbox('.gallery a', {
-//   /* options */
-// });
