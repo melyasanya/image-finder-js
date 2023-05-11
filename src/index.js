@@ -81,6 +81,13 @@ const picturesMarkUp = data => {
     .join('');
   gallery.insertAdjacentHTML('beforeend', markUp);
   lightbox.refresh();
+  const { height: cardHeight } =
+    gallery.firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
 };
 
 const submitForm = async e => {
@@ -103,3 +110,14 @@ const loadMore = async () => {
 form.addEventListener('submit', submitForm);
 
 loadBtn.addEventListener('click', loadMore);
+
+const callback = (entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      loadMore();
+    }
+  });
+};
+
+const observer = new IntersectionObserver(callback);
+observer.observe(loadBtn);
