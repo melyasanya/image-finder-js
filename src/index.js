@@ -119,5 +119,9 @@ const callback = (entries, observer) => {
   });
 };
 
-const observer = new IntersectionObserver(callback);
+const options = {
+  rootMargin: '100px',
+};
+
+const observer = new IntersectionObserver(callback, options);
 observer.observe(loadBtn);
